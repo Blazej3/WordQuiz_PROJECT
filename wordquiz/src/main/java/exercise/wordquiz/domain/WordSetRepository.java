@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface WordSetRepository extends CrudRepository <WordSet, Long>{
 
-List<WordSet> findbyengWord(String engWord);
+List<WordSet> findByEngWord(String engWord);
 
 }
 
