@@ -14,7 +14,7 @@ public class WordSet {
     private Long id;
     private String engWord;
     private String finWord;
-    private String exampleSentance;
+    private String exampleSentence;
     private String difficultyLevel;
     
    
@@ -26,11 +26,11 @@ public WordSet(){
 
 }
 
-public WordSet(String engWord, String finWord, String exampleSentance, String diffiicultyLevel, Category category){
+public WordSet(String engWord, String finWord, String exampleSentence, String difficultyLevel, Category category){
     this.engWord = engWord;
     this.finWord = finWord;
-    this.exampleSentance = exampleSentance;
-    this.difficultyLevel = diffiicultyLevel;
+    this.exampleSentence = exampleSentence;
+    this.difficultyLevel = difficultyLevel;
     this.category = category;
 }
 
@@ -58,12 +58,12 @@ public void setFinWord(String finWord) {
     this.finWord = finWord;
 }
 
-public String getExampleSentance() {
-    return exampleSentance;
+public String getExampleSentence() {
+    return exampleSentence;
 }
 
-public void setExampleSentance(String exampleSentance) {
-    this.exampleSentance = exampleSentance;
+public void setExampleSentence(String exampleSentence) {
+    this.exampleSentence = exampleSentence;
 }
 
 public String getDifficultyLevel() {
@@ -84,8 +84,8 @@ public void setCategory(Category category) {
 
 @Override
 public String toString() {
-    return "WordSet [id=" + id + ", engWord=" + engWord + ", finWord=" + finWord + ", exampleSentance="
-            + exampleSentance + ", difficultyLevel=" + difficultyLevel + ", category=" + category + "]";
+    return "WordSet [id=" + id + ", engWord=" + engWord + ", finWord=" + finWord + ", exampleSentence="
+            + exampleSentence + ", difficultyLevel=" + difficultyLevel + ", category=" + category + "]";
 }
 
 

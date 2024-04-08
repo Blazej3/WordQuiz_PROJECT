@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Words By Category</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <h1>Categories</h1>
+
+
+
+    <table class="table table-striped">
+        <tbody>
+            <tr th:each="category : ${categories}">
+                <td>
+                    <a th:href="@{'/categorylist/' + ${category.categoryId}}">
+                        <span th:text="${category.categoryName}"></span>
+                    </a>
+
+                </td>
+                <td>
+                    <a th:href="@{'/quiz/' + ${category.categoryId} + '/' + '0'}">
+                        <span>take the quiz</span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+</body>
+
+</html>
