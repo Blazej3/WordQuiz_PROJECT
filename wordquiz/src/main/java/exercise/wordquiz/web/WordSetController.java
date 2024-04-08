@@ -51,11 +51,21 @@ public class WordSetController {
         return "add.html";
     }
 
+    @GetMapping(value = "/delete/{id}")
+    public String deleteWordSet(@PathVariable("id") Long id, Model model) {
+            Long categoryId = w_repository.findById(id).get().getCategory().getCategoryId();
+            w_repository.deleteById(id);
+            return "redirect:/categorylist/" + categoryId;
+        } 
+    
+    
+
     @PostMapping(value = "/save")
     public String save(WordSet wordSet) {
         w_repository.save(wordSet);
         return "redirect:/categorylist/" + wordSet.getCategory().getCategoryId();
     }
+
 
     @GetMapping("/quiz/{categoryId}/{wordIndex}")
     public String quizWordsByCategory(@PathVariable Long categoryId,

@@ -25,6 +25,14 @@
                     <td th:text="${word.exampleSentence}"></td>
                     <td th:text="${word.difficultyLevel}"></td>
                     <td ><a th:href="@{/edit/{id}(id=${word.id})}" class="btn btn-xs btn-danger">Edit</a></td>    		  		
+                    <td>
+                        <a href="#" 
+                           th:href="@{/delete/{id}(id=${word.id})}"
+                           class="btn btn-xs btn-danger" 
+                           onclick="return confirm('Are you sure you want to delete this item?');">
+                               Delete
+                        </a>
+                    </td>
 
                 </tr>
             </tbody>
