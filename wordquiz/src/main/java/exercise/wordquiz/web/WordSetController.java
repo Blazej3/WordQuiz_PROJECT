@@ -44,6 +44,13 @@ public class WordSetController {
         return "edit.html";
     }
 
+    @GetMapping(value = "/add")
+    public String addWordSet(Model model) {
+        model.addAttribute("word", new WordSet());
+        model.addAttribute("categories", c_repository.findAll());
+        return "add.html";
+    }
+
     @PostMapping(value = "/save")
     public String save(WordSet wordSet) {
         w_repository.save(wordSet);
@@ -83,7 +90,8 @@ public class WordSetController {
         } else if (userFinWord.equals(word.getFinWord())) {
             model.addAttribute("category", word.getCategory());
             model.addAttribute("result", "Correct!");
-
+            model.addAttribute("correctanswer", word.getEngWord() +" = " + word.getFinWord());
+            model.addAttribute("exampleSentence", word.getExampleSentence());
             List<WordSet> words = w_repository.findByCategoryCategoryId(word.getCategory().getCategoryId());
 
             if (wordIndex < words.size() - 1) {
