@@ -37,6 +37,19 @@ public class WordSetController {
         return "wordlist.html";
     }
 
+    @GetMapping(value = "/edit/{id}")
+    public String editWordSetForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("word", w_repository.findById(id));
+        model.addAttribute("categories", c_repository.findAll());
+        return "edit.html";
+    }
+
+    @PostMapping(value = "/save")
+    public String save(WordSet wordSet) {
+        w_repository.save(wordSet);
+        return "redirect:/categorylist/" + wordSet.getCategory().getCategoryId();
+    }
+
     @GetMapping("/quiz/{categoryId}/{wordIndex}")
     public String quizWordsByCategory(@PathVariable Long categoryId,
             @PathVariable int wordIndex,
