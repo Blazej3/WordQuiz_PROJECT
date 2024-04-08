@@ -34,6 +34,7 @@ public class WordSetController {
     public String displayWordsByCategory(@PathVariable Long categoryId, Model model) {
         List<WordSet> words = w_repository.findByCategoryCategoryId(categoryId);
         model.addAttribute("words", words);
+        model.addAttribute("categoryId", categoryId);
         return "wordlist.html";
     }
 
@@ -44,28 +45,27 @@ public class WordSetController {
         return "edit.html";
     }
 
-    @GetMapping(value = "/add")
-    public String addWordSet(Model model) {
-        model.addAttribute("word", new WordSet());
-        model.addAttribute("categories", c_repository.findAll());
+    @GetMapping(value = "/add/{categoryId}")
+    public String addWordSet(@PathVariable("categoryId") Long categoryId, Model model) {
+        WordSet newwordSet = new WordSet();
+        newwordSet.setCategory(c_repository.findById(categoryId).orElse(null));
+        model.addAttribute("word", newwordSet);
+
         return "add.html";
     }
 
     @GetMapping(value = "/delete/{id}")
     public String deleteWordSet(@PathVariable("id") Long id, Model model) {
-            Long categoryId = w_repository.findById(id).get().getCategory().getCategoryId();
-            w_repository.deleteById(id);
-            return "redirect:/categorylist/" + categoryId;
-        } 
-    
-    
+        Long categoryId = w_repository.findById(id).get().getCategory().getCategoryId();
+        w_repository.deleteById(id);
+        return "redirect:/categorylist/" + categoryId;
+    }
 
     @PostMapping(value = "/save")
     public String save(WordSet wordSet) {
         w_repository.save(wordSet);
         return "redirect:/categorylist/" + wordSet.getCategory().getCategoryId();
     }
-
 
     @GetMapping("/quiz/{categoryId}/{wordIndex}")
     public String quizWordsByCategory(@PathVariable Long categoryId,
@@ -100,7 +100,7 @@ public class WordSetController {
         } else if (userFinWord.equals(word.getFinWord())) {
             model.addAttribute("category", word.getCategory());
             model.addAttribute("result", "Correct!");
-            model.addAttribute("correctanswer", word.getEngWord() +" = " + word.getFinWord());
+            model.addAttribute("correctanswer", word.getEngWord() + " = " + word.getFinWord());
             model.addAttribute("exampleSentence", word.getExampleSentence());
             List<WordSet> words = w_repository.findByCategoryCategoryId(word.getCategory().getCategoryId());
 
