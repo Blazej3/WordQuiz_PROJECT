@@ -44,8 +44,8 @@ public class WordquizApplication {
             WordSet wordSet1 = new WordSet("apple", "omena", "This is an example sentence with an apple.", "easy", category1);
             WordSet wordSet2 = new WordSet("cat", "kissa", "This is an example sentence with a cat.", "medium", category2);
             WordSet wordSet3 = new WordSet("eye", "silmä", "This is an example sentence with an eye.", "hard", category3);
-            WordSet wordSet4 = new WordSet("arm", "käsivarsi", "This is an example sentence with an eye.", "hard", category3);
-            WordSet wordSet5 = new WordSet("stomach", "vatsa", "This is an example sentence with an eye.", "hard", category3);
+            WordSet wordSet4 = new WordSet("arm", "käsivarsi", "This is an example sentence with an arm.", "hard", category3);
+            WordSet wordSet5 = new WordSet("stomach", "vatsa", "This is an example sentence with a stomach.", "hard", category3);
 
             // Save WordSet instances to the repository
             w_repository.save(wordSet1);

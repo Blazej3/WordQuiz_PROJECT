@@ -34,10 +34,37 @@ public class CategoryController {
         return "addcategory.html";
     }
 
+
+
+    @GetMapping(value = "/editcategory/{id}")
+    public String editWordSetForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("category", c_repository.findById(id));
+        return "editcategory.html";
+    }
+
+    @GetMapping(value = "/deletecategory/{id}")
+    public String deleteCategoryAndWordSets(@PathVariable("id") Long id, Model model) {
+        Category category = c_repository.findById(id).orElse(null);
+
+            List<WordSet> wordSets = category.getWordSets();
+            for (WordSet wordSet : wordSets) {
+                w_repository.deleteById(wordSet.getId());
+            }
+            c_repository.deleteById(id);
+            return "redirect:/home";
+
+    }
+    
+    
+
+
     @PostMapping(value = "/savecategory")
     public String save(Category category) {
         c_repository.save(category);
         return "redirect:/home";
     }
+// add delete category which deletes all the sub words within it 
+
+// add edit category name
 
 }

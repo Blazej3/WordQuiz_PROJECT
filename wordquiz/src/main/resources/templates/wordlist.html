@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Words By Category</h1>
         
-        <a th:href="@{'/add/' + ${categoryId}}" class="btn btn-primary">Add Word Set</a>
+        <a th:href="@{'/addwordset/' + ${categoryId}}" class="btn btn-primary">Add Word Set</a>
 
         <table class="table table-striped">
           
@@ -27,10 +27,10 @@
                     <td th:text="${word.finWord}"></td>
                     <td th:text="${word.exampleSentence}"></td>
                     <td th:text="${word.difficultyLevel}"></td>
-                    <td ><a th:href="@{/edit/{id}(id=${word.id})}" class="btn btn-xs btn-danger">Edit</a></td>    		  		
+                    <td ><a th:href="@{/editwordset/{id}(id=${word.id})}" class="btn btn-xs btn-danger">Edit</a></td>    		  		
                     <td>
                         <a href="#" 
-                           th:href="@{/delete/{id}(id=${word.id})}"
+                           th:href="@{/deletewordset/{id}(id=${word.id})}"
                            class="btn btn-xs btn-danger" 
                            onclick="return confirm('Are you sure you want to delete this item?');">
                                Delete

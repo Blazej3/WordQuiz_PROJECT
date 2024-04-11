@@ -27,6 +27,19 @@
                         <span>take the quiz</span>
                     </a>
                 </td>
+                <td>
+                    <a th:href="@{'/editcategory/' + ${category.categoryId}}">
+                        <span>Edit Name</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" 
+                    th:href="@{'/deletecategory/' + ${category.categoryId}}"
+                       class="btn btn-xs btn-danger" 
+                       onclick="return confirm('Are you sure you want to delete this item?');">
+                           Delete
+                    </a>
+                </td>
             </tr>
         </tbody>
         <a href="/addcategory" class="btn btn-primary">Add Category</a>

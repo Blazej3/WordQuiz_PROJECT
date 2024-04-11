@@ -15,6 +15,9 @@
     <div th:if="${result}" th:text="${result}" class="result-message"></div>
     <div th:if="${correctanswer}" th:text="${correctanswer}" class="result-message"></div>
     <div th:if="${exampleSentence}" th:text="${exampleSentence}" class="result-message"></div>
+    <div >
+        <a href="/home" class="btn btn-info">Go to Home Page</a>
+    </div>
     <!-- Display the quiz word -->
     <form method="post" action="/submit-quiz">
         <div  th:if="${result == ''}"class="card">

@@ -38,30 +38,30 @@ public class WordSetController {
         return "wordlist.html";
     }
 
-    @GetMapping(value = "/edit/{id}")
+    @GetMapping(value = "/editwordset/{id}")
     public String editWordSetForm(@PathVariable("id") Long id, Model model) {
         model.addAttribute("word", w_repository.findById(id));
         model.addAttribute("categories", c_repository.findAll());
-        return "edit.html";
+        return "editwordset.html";
     }
 
-    @GetMapping(value = "/add/{categoryId}")
+    @GetMapping(value = "/addwordset/{categoryId}")
     public String addWordSet(@PathVariable("categoryId") Long categoryId, Model model) {
         WordSet newwordSet = new WordSet();
         newwordSet.setCategory(c_repository.findById(categoryId).orElse(null));
         model.addAttribute("word", newwordSet);
 
-        return "add.html";
+        return "addwordset.html";
     }
 
-    @GetMapping(value = "/delete/{id}")
+    @GetMapping(value = "/deletewordset/{id}")
     public String deleteWordSet(@PathVariable("id") Long id, Model model) {
         Long categoryId = w_repository.findById(id).get().getCategory().getCategoryId();
         w_repository.deleteById(id);
         return "redirect:/categorylist/" + categoryId;
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/savewordset")
     public String save(WordSet wordSet) {
         w_repository.save(wordSet);
         return "redirect:/categorylist/" + wordSet.getCategory().getCategoryId();

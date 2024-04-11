@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>editBook</title>
+    <title>Add Word Set</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
@@ -10,9 +10,9 @@
 <body>
 
 
-    <h1>Edit Word Set</h1>
+    <h1>Add a Word Set</h1>
     <div>
-        <form th:object="${word}" th:action="@{../save}" action="#" method="post">
+        <form th:object="${word}" th:action="@{../savewordset}" action="#" method="post">
 
             <input type="hidden" id="id" th:field="*{id}" />
 
@@ -28,18 +28,12 @@
             <label for="difficultyLevel">Diffiiculty Level:</label>
             <input type="text" th:field="*{difficultyLevel}" />
 
-
-            <label for="category">Category:</label>
-            <select id="category" th:field="*{category}" class="form-control">
-                <option th:each="category: ${categories}" th:value="${category.categoryId}"
-                    th:text="${category.categoryName}"></option>
-            </select>
+            <input type="hidden" th:field="*{category.categoryId}" />
 
             <input type="submit" value="Save" />
-            
         </form>
+        <a href="/home">Home</a>
     </div>
 </body>
-
 
 </html>
