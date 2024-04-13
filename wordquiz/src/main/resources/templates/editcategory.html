@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>addCategory</title>
+    <title>editQuiz</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
@@ -10,13 +10,13 @@
 <body>
 
 
-    <h1>Edit a Category</h1>
+    <h1>Edit a Quiz</h1>
     <div>
         <form th:object="${category}" th:action="@{../savecategory}" action="#" method="post">
 
             <input type="hidden" id="id" th:field="*{categoryId}" />
 
-            <label for="categoryName">New Category Name:</label>
+            <label for="categoryName">New Quiz Name:</label>
             <input type="text" th:field="*{categoryName}" />
 
             <input type="submit" value="Save" />

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>editBook</title>
+    <title>editWordSet</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
@@ -29,7 +29,7 @@
             <input type="text" th:field="*{difficultyLevel}" />
 
 
-            <label for="category">Category:</label>
+            <label for="category">Quiz:</label>
             <select id="category" th:field="*{category}" class="form-control">
                 <option th:each="category: ${categories}" th:value="${category.categoryId}"
                     th:text="${category.categoryName}"></option>

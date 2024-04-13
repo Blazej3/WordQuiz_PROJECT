@@ -2,14 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Words By Category</title>
+    <title>wordSetList</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
-        <h1>Words By Category</h1>
+        <h1>Words By quiz</h1>
         
         <a th:href="@{'/addwordset/' + ${categoryId}}" class="btn btn-primary">Add Word Set</a>
+        <a th:href="@{'/quiz/' + ${categoryId} + '/' + '0'}"> <span>take the quiz</span></a>
+   
 
         <table class="table table-striped">
           
