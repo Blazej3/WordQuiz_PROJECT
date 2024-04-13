@@ -10,8 +10,11 @@ import org.springframework.context.annotation.Bean;
 
 import exercise.wordquiz.domain.WordSet;
 import exercise.wordquiz.domain.WordSetRepository;
+import exercise.wordquiz.domain.AppUser;
+import exercise.wordquiz.domain.AppUserRepository;
 import exercise.wordquiz.domain.Category;
 import exercise.wordquiz.domain.CategoryRepository;
+
 
 @SpringBootApplication
 public class WordquizApplication {
@@ -25,7 +28,7 @@ public class WordquizApplication {
 
     // Bean for initializing data on application startup
     @Bean
-    public CommandLineRunner bookDemo(WordSetRepository w_repository, CategoryRepository c_repository) {
+    public CommandLineRunner bookDemo(WordSetRepository w_repository, CategoryRepository c_repository, AppUserRepository u_repository) {
         return (args) -> {
             // Log information about saving entities
             log.info("save a couple of books");
@@ -53,7 +56,18 @@ public class WordquizApplication {
             w_repository.save(wordSet3);
             w_repository.save(wordSet4);
             w_repository.save(wordSet5);
+
+
+            AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6","user1@gmail.com", "USER");
+			AppUser user2 = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C","user2@gmail.com", "ADMIN");
+			u_repository.save(user1);
+			u_repository.save(user2);
             
+
+            log.info("fetch all wordsets");
+			for (WordSet WordSet: w_repository.findAll()) {
+				log.info(WordSet.toString());
+			}
         };
     }
 }

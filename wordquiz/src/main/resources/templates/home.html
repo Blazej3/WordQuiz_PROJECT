@@ -11,6 +11,17 @@
 
     <h1>Categories</h1>
 
+    <span>Welcome <span sec:authentication="principal.username">Username</span></span>
+
+
+
+
+        <form  th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" />
+        </form>
+
+
+
 
 
     <table class="table table-striped">
@@ -20,7 +31,6 @@
                     <a th:href="@{'/categorylist/' + ${category.categoryId}}">
                         <span th:text="${category.categoryName}"></span>
                     </a>
-
                 </td>
                 <td>
                     <a th:href="@{'/quiz/' + ${category.categoryId} + '/' + '0'}">
@@ -42,8 +52,9 @@
                 </td>
             </tr>
         </tbody>
-        <a href="/addcategory" class="btn btn-primary">Add Category</a>
+       
     </table>
+    <a href="/addcategory" class="btn btn-primary">Add Category</a>
 
 
 

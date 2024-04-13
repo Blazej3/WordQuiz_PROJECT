@@ -23,6 +23,12 @@ public class WordSetController {
     @Autowired
     private CategoryRepository c_repository;
 
+    // login page
+    @RequestMapping(value = "/login")
+    public String login() {
+        return "login.html";
+    }
+
     // show all WordSets
     @RequestMapping(value = { "/home" })
     public String wordList(Model model) {
