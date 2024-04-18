@@ -2,6 +2,7 @@ package exercise.wordquiz.web;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -94,6 +95,8 @@ public class WordSetController {
         return "quiz.html";
     }
 
+    
+
     @PostMapping("/submit-quiz")
     public String submitQuiz(@RequestParam("wordId") Long wordId,
             @RequestParam("userFinWord") String userFinWord,
@@ -103,7 +106,7 @@ public class WordSetController {
 
         if (word == null) {
             model.addAttribute("result", "Word not found!");
-        } else if (userFinWord.equals(word.getFinWord())) {
+        }else if (userFinWord.equalsIgnoreCase(word.getFinWord())) {
             model.addAttribute("category", word.getCategory());
             model.addAttribute("result", "Correct!");
             model.addAttribute("correctanswer", word.getEngWord() + " = " + word.getFinWord());
